@@ -20,7 +20,6 @@
                         <div class="card-body">
                             <form action="">
                                 <label for="name">Inter your name</label>
-                                <input type="text">
                                 <input class="form-control" type="text" name="name">
                                 <label for="uname">Inter your user name</label>
                                 <input class="form-control" type="text" name="uname">
