@@ -32,32 +32,6 @@ class User extends Database
         $rejult = mysqli_query($this->conn, $query);
         if(mysqli_num_rows($rejult)>0);
         return $datas=mysqli_fetch_assoc($rejult);
-
-        // $stmt = $this->conn->prepare("SELECT email FROM users WHERE username = ? and password = ?");
-        // $stmt->bind_param("ss", $username, $password);
-        // $stmt->execute();
-        // $stmt->store_result();
-        // $numRows = $stmt->num_rows;
-        // $stmt->close();
-        // return $numRows > 0;
     }
-
-    // public function login($username, $password)
-    // {
-    //     $stmt = $this->conn->prepare("SELECT ID, username, email, password FROM users WHERE username=? and password=?");
-    //     $stmt->bind_param("ss", $username, $password);
-    //     $stmt->execute();
-    //     $result = $stmt->get_result();
-
-    //     if ($result->num_rows === 1) {
-    //         $user = $result->fetch_assoc();
-    //         if (password_verify($password, $user['password'])) {
-    //             unset($user['password']);
-    //             return $user;
-    //         }
-    //     }
-
-    //     return false;
-    // }
 }
 ?>
