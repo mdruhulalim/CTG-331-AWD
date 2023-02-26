@@ -5,22 +5,14 @@ if(isset($_POST['submit'])){
     $user = new User();
     $login = $user->login($_POST['uname'], $_POST['password']);
     if($login > 0){
-        echo "Hello";
+        session_start();
+        $_SESSION['ID']=$login['ID'];
+        $_SESSION['username']=$login['username'];
+        $_SESSION['email']=$login['email'];
+        header('Location: index.php');
     } else {
         $error = "Invalid login credentials.";
     }
-
-    // if ($login) {
-    //     // Set session variables and redirect user to dashboard
-    //     session_start();
-    //     $_SESSION['user_id'] = $login['ID'];
-    //     $_SESSION['username'] = $login['username'];
-    //     $_SESSION['email'] = $login['email'];
-    //     header('Location: index.php');
-    //     exit;
-    // } else {
-    //     $error = "Invalid login credentials.";
-    // }
 }
 ?>
 

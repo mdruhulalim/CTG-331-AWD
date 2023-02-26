@@ -1,3 +1,8 @@
+<?php
+if(!isset($_SESSION['username'])){
+    session_start();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,15 +25,24 @@
                 </button>
                 <div class="collapse navbar-collapse" id="myNav">
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="index.php">Home</a>
-                        </li>
+                        <?php if(!isset($_SESSION['username'])): ?>
                         <li class="nav-item">
                             <a class="nav-link" href="login.php">log in</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="register.php">Sign up</a>
+                            <a class="nav-link" href="register.php">Register</a>
                         </li>
+                        <?php else: ?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.php">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="addquestion.php">Add Question</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="logout.php">Log out</a>
+                        </li>
+                        <?php endif; ?>
                     </ul>
                 </div>
             </div>

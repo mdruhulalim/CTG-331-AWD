@@ -4,7 +4,7 @@ class User extends Database
 {
     public function insert($username, $email, $password)
     {
-        $password = password_hash($password, PASSWORD_DEFAULT);
+        $password = md5($password);
         $query = "INSERT INTO users (username, email, password) VALUES (?, ?, ?)";
         $stmt = $this->conn->prepare($query);
         $stmt->bind_param("sss", $username, $email, $password);
@@ -28,10 +28,11 @@ class User extends Database
 
     public function login($username, $password)
     {
+        $password = md5($password);
         $query = "SELECT * FROM `users` WHERE username = '$username' and password = '$password'";
         $rejult = mysqli_query($this->conn, $query);
         if(mysqli_num_rows($rejult)>0);
-        return $datas=mysqli_fetch_assoc($rejult);
+        return mysqli_fetch_assoc($rejult);
     }
 }
 ?>
