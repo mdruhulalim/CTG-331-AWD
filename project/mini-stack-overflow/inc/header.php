@@ -27,6 +27,9 @@ if(!isset($_SESSION['username'])){
                     <ul class="navbar-nav ms-auto">
                         <?php if(!isset($_SESSION['username'])): ?>
                         <li class="nav-item">
+                            <a class="nav-link" href="index.php">Home</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="login.php">log in</a>
                         </li>
                         <li class="nav-item">
@@ -40,7 +43,7 @@ if(!isset($_SESSION['username'])){
                             <a class="nav-link" href="addquestion.php">Add Question</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="logout.php">Log out</a>
+                            <a class="nav-link" href="logout.php"><?=$_SESSION['username'];?> Log out</a>
                         </li>
                         <?php endif; ?>
                     </ul>

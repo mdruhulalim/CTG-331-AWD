@@ -1,18 +1,5 @@
 <?php
 include('database.php');
-// class Question extends Database
-// {
-//     public function FunctionName($title, $details, $user_id,)
-//     {
-//         $created_at=date('y-m-d H:i:s');
-//         $query="INSERT INTO `questions`(`title`, `description`, `user_id`, `created_at`) 
-//         VALUES ('$title,','$details','$user_id','$created_at')";
-//         $this->exec($query);
-//         return true;
-//     }
-// }
-
-
 class Question extends Database
 {
     public function Question($title, $details, $user_id,)
@@ -26,5 +13,12 @@ class Question extends Database
         } else {
             return false;
         }
+    }
+
+    public function getAllQuestions() {
+        $query = "SELECT q.*, u.username FROM questions q JOIN users u ON q.user_id = u.id";
+        $result = mysqli_query($this->conn, $query);
+        $questions = mysqli_fetch_all($result, MYSQLI_ASSOC);
+        return $questions;
     }
 }
